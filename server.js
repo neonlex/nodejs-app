@@ -10,6 +10,16 @@ http.createServer(function (req, res) {
   client.connect();
 
   client.query('USE ' + scalarium.db.database);
+  client.query('DROP TABLE `speakers`');
+  client.query('CREATE TABLE `speakers` (`twitter` varchar(255));');
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@ryah');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@felixge');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@pbakaus');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@fjakobs');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@cramforce');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@sippndipp');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@roidrage');");
+  client.query("INSERT INTO speakers (`twitter`) VALUES ('@mraleph');");
   client.query(
     'SELECT twitter FROM speakers',
     function selectCb(err, results, fields) {

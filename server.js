@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
 
   client.query('USE ' + scalarium.db.database);
   client.query('DROP TABLE `speakers`');
-  client.query('CREATE TABLE `speakers` (`twitter` varchar(255));');
+  client.query('CREATE TABLE IF EXISTS `speakers` (`twitter` varchar(255));');
   client.query("INSERT INTO speakers (`twitter`) VALUES ('@ryah');");
   client.query("INSERT INTO speakers (`twitter`) VALUES ('@felixge');");
   client.query("INSERT INTO speakers (`twitter`) VALUES ('@pbakaus');");

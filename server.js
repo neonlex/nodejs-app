@@ -9,14 +9,24 @@ http.createServer(function (req, res) {
   client.host = scalarium.db.host;
   client.connect();
 
-  // do interesting stuff with the mysql client
+  client.query('USE mysql');
+  client.query(
+    'SHOW TABLES',
+    function selectCb(err, results, fields) {
+      if (err) {
+        throw err;
+      }
 
-  client.end();
-
-  res.write('<h1>Demo</h1>');
-  res.write('<p>MySQL user: ' + scalarium.db.username + '</p>');
-  res.write('<p>MySQL password: ' + scalarium.db.password + '</p>');
-  res.write('<p>MySQL host: ' + scalarium.db.host + '</p>');
-  res.end();
+      console.log(results);
+      console.log('fields:' + fields);
+      res.write('<h1>Database: mysql, tables:</h1><ul>');
+      for (var i = 0; i < results.length; i++) {
+        console.log(results[i].Tables_in_mysql);
+        res.write('<li>' + results[i].Tables_in_mysql + '</li>');
+      }
+      res.write('</ul>');
+      client.end();
+      res.end();
+    }
+  );
 }).listen(80);
-

@@ -1,0 +1,8 @@
+{
+  "name": "nodejs-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "mysql": ">=0.9.1"
+  }
+}
+

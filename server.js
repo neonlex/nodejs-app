@@ -7,7 +7,6 @@ http.createServer(function (req, res) {
   client.user = scalarium.db.username;
   client.password = scalarium.db.password;
   client.host = scalarium.db.host;
-  client.connect();
 
   client.query('USE ' + scalarium.db.database);
   client.query('DROP TABLE IF EXISTS `speakers`');

@@ -1,6 +1,6 @@
 var scalarium = require('scalarium'),
     http = require('http'),
-    client = new require('mysql').Client();
+    client = new require('mysql').createClient();
 
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
